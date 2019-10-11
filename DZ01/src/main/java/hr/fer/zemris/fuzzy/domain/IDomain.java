@@ -1,7 +1,7 @@
-package hr.fer.zemris.fuzzy;
+package hr.fer.zemris.fuzzy.domain;
 
 
-public interface IDomain extends Iterable {
+public interface IDomain extends Iterable<DomainElement> {
     int getCardinality();
     IDomain getComponent(int i);
     int getNumberOfComponents();
