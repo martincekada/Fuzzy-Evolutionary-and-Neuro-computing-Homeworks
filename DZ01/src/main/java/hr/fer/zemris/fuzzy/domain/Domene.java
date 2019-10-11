@@ -1,5 +1,7 @@
 package hr.fer.zemris.fuzzy.domain;
 
+import hr.fer.zemris.fuzzy.Debug;
+
 public class Domene {
 
     public static void main(String[] args) {
