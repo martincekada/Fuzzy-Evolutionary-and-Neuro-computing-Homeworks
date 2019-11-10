@@ -10,12 +10,14 @@ public class HelmFuzzySystemMin extends FuzzySystem {
     public HelmFuzzySystemMin(Defuzzifier defuzzifier) {
         super(defuzzifier);
 
-        System.err.println("s eIddmam rere sol sdfae");
+        System.err.println("test");
         rules.add(IF_CLOSE_RIGHT_TURN_LEFT);
         rules.add(IF_CLOSE_LEFT_TURN_RIGHT);
 
         rules.add(IF_CLOSE_RIGHT_FRONT_TURN_LEFT_EASY);
         rules.add(IF_CLOSE_LEFT_FRONT_TURN_RIGHT_EASY);
+
+//        rules.add(IF_BACKWARDS_TURN_RIGHT);
     }
 
     @Override

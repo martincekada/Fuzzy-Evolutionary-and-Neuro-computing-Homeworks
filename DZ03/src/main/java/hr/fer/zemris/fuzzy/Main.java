@@ -7,15 +7,11 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-//        System.out.println("Hello world");
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
 
-        // Biramo način dekodiranja neizrazitosti:
-        Defuzzifier def = new COADefuzzifier();
-        // Stvaranje oba sustava:
-        // Grade se baze pravila i sve se inicijalizira
 
-//        TODO: zawrappat ovo u jedan sustav koji vraca dva izlaza
+        Defuzzifier def = new COADefuzzifier();
+
         FuzzySystem fsAkcel = new AkcelFuzzySystemMin(def);
         FuzzySystem fsHelm = new HelmFuzzySystemMin(def);
 

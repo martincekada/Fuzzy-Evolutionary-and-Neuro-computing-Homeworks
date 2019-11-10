@@ -17,12 +17,12 @@ public class ModelRelations {
     );
     public static IFuzzySet ACCELERATE = new CalculatedFuzzySet(
             AKCELERATION,
-            StandardFuzzySets.gammaFunction(AKCELERATION.indexOfElement(DomainElement.of(20)), AKCELERATION.indexOfElement(DomainElement.of(30)))
+            StandardFuzzySets.gammaFunction(AKCELERATION.indexOfElement(DomainElement.of(10)), AKCELERATION.indexOfElement(DomainElement.of(30)))
     );
 
     public static IFuzzySet CLOSE_TO_COAST = new CalculatedFuzzySet(
             DISTANCE,
-            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(50)), DISTANCE.indexOfElement(DomainElement.of(60)))
+            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(50)), DISTANCE.indexOfElement(DomainElement.of(65)))
     );
 
     public static IFuzzySet REALLY_CLOSE_TO_COAST = new CalculatedFuzzySet(
@@ -50,5 +50,10 @@ public class ModelRelations {
     public static IFuzzySet TURN_RIGHT_EASY = new CalculatedFuzzySet(
             ANGLE,
             StandardFuzzySets.lFunction(ANGLE.indexOfElement(DomainElement.of(-60)), ANGLE.indexOfElement(DomainElement.of(-70)))
+    );
+
+    public static IFuzzySet BACKWARDS = new CalculatedFuzzySet(
+            DIRECTION,
+            StandardFuzzySets.lFunction(DIRECTION.indexOfElement(DomainElement.of(0)), DIRECTION.indexOfElement(DomainElement.of(1)))
     );
 }

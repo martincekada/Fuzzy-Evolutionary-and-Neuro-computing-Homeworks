@@ -35,4 +35,9 @@ public class ModelRules {
             new IFuzzySet[] {null, null, CLOSE_TO_COAST, null, null, null},
             TURN_RIGHT_EASY
     );
+
+    public static Rule IF_BACKWARDS_TURN_RIGHT = new Rule(
+            new IFuzzySet[] {null, null, null, null, null, BACKWARDS},
+            TURN_LEFT
+    );
 }

@@ -9,4 +9,6 @@ public class ModelDomains {
 
     public static IDomain ANGLE = Domain.intRange(-90, 91);
     public static IDomain DISTANCE = Domain.intRange(0, 1301);
+
+    public static IDomain DIRECTION = Domain.intRange(0, 2);
 }

@@ -18,7 +18,6 @@ public class Rule {
         double minValue = 1.0;
 
         for (int i = 0, n = ifs.length; i < n; ++i) {
-//          TODO:  null patern za prazne dijelove pravila
 
             if (ifs[i] == null) continue;
 
@@ -26,6 +25,7 @@ public class Rule {
             if (partValue < minValue) {
                 minValue = partValue;
             }
+//            minValue *= partValue;
         }
 
         System.err.println("Uzimam u obzir: " + minValue);
