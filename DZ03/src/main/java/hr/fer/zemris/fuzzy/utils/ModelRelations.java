@@ -22,28 +22,33 @@ public class ModelRelations {
 
     public static IFuzzySet CLOSE_TO_COAST = new CalculatedFuzzySet(
             DISTANCE,
-            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(30)), DISTANCE.indexOfElement(DomainElement.of(120)))
+            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(50)), DISTANCE.indexOfElement(DomainElement.of(60)))
+    );
+
+    public static IFuzzySet REALLY_CLOSE_TO_COAST = new CalculatedFuzzySet(
+            DISTANCE,
+            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(40)), DISTANCE.indexOfElement(DomainElement.of(50)))
     );
 
     public static IFuzzySet TURN_LEFT = new CalculatedFuzzySet(
             ANGLE,
-            StandardFuzzySets.gammaFunction(ANGLE.indexOfElement(DomainElement.of(60)), ANGLE.indexOfElement(DomainElement.of(80)))
+            StandardFuzzySets.gammaFunction(ANGLE.indexOfElement(DomainElement.of(70)), ANGLE.indexOfElement(DomainElement.of(90)))
     );
 
 
     public static IFuzzySet TURN_RIGHT = new CalculatedFuzzySet(
             ANGLE,
-            StandardFuzzySets.lFunction(ANGLE.indexOfElement(DomainElement.of(-60)), ANGLE.indexOfElement(DomainElement.of(-80)))
+            StandardFuzzySets.lFunction(ANGLE.indexOfElement(DomainElement.of(-70)), ANGLE.indexOfElement(DomainElement.of(-90)))
     );
 
     public static IFuzzySet TURN_LEFT_EASY = new CalculatedFuzzySet(
             ANGLE,
-            StandardFuzzySets.gammaFunction(ANGLE.indexOfElement(DomainElement.of(20)), ANGLE.indexOfElement(DomainElement.of(50)))
+            StandardFuzzySets.gammaFunction(ANGLE.indexOfElement(DomainElement.of(60)), ANGLE.indexOfElement(DomainElement.of(70)))
     );
 
 
     public static IFuzzySet TURN_RIGHT_EASY = new CalculatedFuzzySet(
             ANGLE,
-            StandardFuzzySets.lFunction(ANGLE.indexOfElement(DomainElement.of(-20)), ANGLE.indexOfElement(DomainElement.of(-50)))
+            StandardFuzzySets.lFunction(ANGLE.indexOfElement(DomainElement.of(-60)), ANGLE.indexOfElement(DomainElement.of(-70)))
     );
 }

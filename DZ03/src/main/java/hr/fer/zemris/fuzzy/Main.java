@@ -39,7 +39,7 @@ public class Main {
             akcel = fsAkcel.conclude(L, D, LK, DK, V, S);
             kormilo = fsHelm.conclude(L, D, LK, DK, V, S);
             System.out.println(akcel + " " + kormilo);
-            System.err.println(akcel + " " + kormilo + " : L " + L + " D " + D + " LK " + LK + " DK" + DK);
+            System.err.println(akcel + " " + kormilo + " : V " + V + " L " + L + " D " + D + " LK " + LK + " DK" + DK);
             System.out.flush();
         }
     }

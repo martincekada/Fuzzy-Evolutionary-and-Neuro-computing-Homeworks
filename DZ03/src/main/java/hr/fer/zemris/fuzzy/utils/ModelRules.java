@@ -15,13 +15,13 @@ public class ModelRules {
     //    L, D, LK, DK, V, S
 
     public static Rule IF_CLOSE_RIGHT_TURN_LEFT = new Rule(
-            new IFuzzySet[] {null, CLOSE_TO_COAST, null, null, null, null},
+            new IFuzzySet[] {null, REALLY_CLOSE_TO_COAST, null, null, null, null},
             TURN_LEFT
     );
 
 
     public static Rule IF_CLOSE_LEFT_TURN_RIGHT = new Rule(
-            new IFuzzySet[] {CLOSE_TO_COAST, null, null, null, null, null},
+            new IFuzzySet[] {REALLY_CLOSE_TO_COAST, null, null, null, null, null},
             TURN_RIGHT
     );
 
