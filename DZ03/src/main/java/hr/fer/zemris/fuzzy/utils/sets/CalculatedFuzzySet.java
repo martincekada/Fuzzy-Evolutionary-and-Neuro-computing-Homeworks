@@ -14,6 +14,17 @@ public class CalculatedFuzzySet implements IFuzzySet {
     }
 
     @Override
+    public IFuzzySet reduceTo(double coff) {
+        MutableFuzzySet reduced = new MutableFuzzySet(domain);
+
+        for (DomainElement e : domain) {
+            reduced.set(e, Math.min(coff, getValueAt(e)));
+        }
+
+        return reduced;
+    }
+
+    @Override
     public IDomain getDomain() {
         return domain;
     }

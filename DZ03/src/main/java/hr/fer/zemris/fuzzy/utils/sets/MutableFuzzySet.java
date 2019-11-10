@@ -27,4 +27,15 @@ public class MutableFuzzySet implements IFuzzySet {
     public double getValueAt(DomainElement e) {
         return memberships[domain.indexOfElement(e)];
     }
+
+    @Override
+    public IFuzzySet reduceTo(double coff) {
+        MutableFuzzySet reduced = new MutableFuzzySet(domain);
+
+        for (DomainElement e : domain) {
+            reduced.set(e, Math.min(coff, getValueAt(e)));
+        }
+
+        return reduced;
+    }
 }
