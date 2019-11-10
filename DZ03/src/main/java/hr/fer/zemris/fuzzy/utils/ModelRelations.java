@@ -13,7 +13,7 @@ public class ModelRelations {
 
     public static IFuzzySet GOING_SLOW = new CalculatedFuzzySet(
             VELOCITY,
-            StandardFuzzySets.lFunction(VELOCITY.indexOfElement(DomainElement.of(0)), VELOCITY.indexOfElement(DomainElement.of(80)))
+            StandardFuzzySets.lFunction(VELOCITY.indexOfElement(DomainElement.of(0)), VELOCITY.indexOfElement(DomainElement.of(50)))
     );
     public static IFuzzySet ACCELERATE = new CalculatedFuzzySet(
             AKCELERATION,
@@ -22,7 +22,7 @@ public class ModelRelations {
 
     public static IFuzzySet CLOSE_TO_COAST = new CalculatedFuzzySet(
             DISTANCE,
-            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(30)), DISTANCE.indexOfElement(DomainElement.of(80)))
+            StandardFuzzySets.lFunction(DISTANCE.indexOfElement(DomainElement.of(30)), DISTANCE.indexOfElement(DomainElement.of(120)))
     );
 
     public static IFuzzySet TURN_LEFT = new CalculatedFuzzySet(
