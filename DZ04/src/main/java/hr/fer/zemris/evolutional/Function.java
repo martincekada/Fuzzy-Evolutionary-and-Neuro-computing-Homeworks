@@ -11,7 +11,7 @@ public class Function {
         List<Record> tmp = null;
 
         try {
-            tmp = Record.loadRecordsFromFile("./src/main/resources/zad4-dataset2.txt");
+            tmp = Record.loadRecordsFromFile("./src/main/resources/zad4-dataset1.txt");
         } catch (IOException e) {
             System.err.println("Could not read dataset!");
         }

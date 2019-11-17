@@ -26,13 +26,13 @@ public class Main {
         //        pop = 10, elite= 1, mut(3, 0.5), tournament(3)
 
 
-        AbstractMutation mutation = new Mutation(3, 0.4);
+        AbstractMutation mutation = new Mutation(3, 0.5);
         AbstractCrossover crossover = new DiscreteCrossover();
-        AbstractSelection selection = new TournamentSelection(5);
+        AbstractSelection selection = new TournamentSelection(3);
 
-        int population_size = 50;
+        int population_size = 10;
 
-        new Trainer().train(population_size, true, 1, crossover, selection, mutation);
+        new Trainer().train(population_size, false, 1, crossover, selection, mutation);
 
     }
 }
