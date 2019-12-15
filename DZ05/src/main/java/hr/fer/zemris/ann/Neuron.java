@@ -15,8 +15,7 @@ public class Neuron implements INeuron {
     private List<Double> outputs;
     private List<Double> errors;
 
-//    -0.5?
-    private static double LEARNING_RATE = -0.5;
+    private static double LEARNING_RATE = 0.2;
 
     public Neuron(int weightsLength) {
         this.weights = new double[weightsLength];
@@ -28,8 +27,6 @@ public class Neuron implements INeuron {
         for (int i = 0; i < weightsLength; ++i) {
             weights[i] = r.nextDouble() * 4.8 - 2.4;
         }
-
-        System.out.println(Arrays.toString(weights));
     }
 
 
@@ -43,9 +40,6 @@ public class Neuron implements INeuron {
 
     public double getOutputFor(double[] input) {
         if (input.length != weights.length) {
-            System.err.println("--");
-            System.err.println("Input: " + Arrays.toString(input));
-            System.err.println("Weights: " + Arrays.toString(weights));
             throw new IllegalArgumentException("Razlicite velicine inputa i weightova");
         }
 
@@ -65,7 +59,6 @@ public class Neuron implements INeuron {
     }
 
     public void addErrorFor(double target) {
-//        ili output - target nezz
         double error = output * (1 - output) * (target - output);
         errors.add(error);
     }
@@ -116,7 +109,7 @@ public class Neuron implements INeuron {
 
             double correction = 0;
             for (int j = 0, m = errors.size(); j < m; ++j) {
-                correction += (previosNeuron.getOutputAt(i) * errors.get(i));
+                correction += (previosNeuron.getOutputAt(j) * errors.get(j));
             }
 
             newWeights[i] = weights[i] + LEARNING_RATE * correction;

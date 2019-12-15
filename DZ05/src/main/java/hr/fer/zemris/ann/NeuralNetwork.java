@@ -3,11 +3,13 @@ package hr.fer.zemris.ann;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 
 import static java.lang.Math.pow;
 
 public class NeuralNetwork {
     private List<Layer> layers;
+    private static int MAX_ITERS = 5_000;
 
 
     public NeuralNetwork(int... layers) {
@@ -39,22 +41,34 @@ public class NeuralNetwork {
     }
 
     private void groupLearning(List<Sample> samples) {
-        while(true) {
+        int iter = 0;
+        while(calculateError(samples) > 0.00000001 && iter < MAX_ITERS) {
             learnOn(samples);
-            printError(samples);
+
+            if (iter % 10_00 == 0) {
+                printError(samples);
+            }
+            iter++;
         }
 
     }
 
     private void stohasticLearning(List<Sample> samples) {
+        Random r = new Random();
+
         List<Sample> oneSampleList = new ArrayList<>();
-        while (true) {
+        int iter = 0;
+        while(calculateError(samples) > 0.0000001 && iter < MAX_ITERS * 5) {
             for (Sample s : samples) {
                 oneSampleList.add(s);
                 learnOn(oneSampleList);
                 oneSampleList.clear();
 
-                printError(samples);
+                if (iter % (5_000) == 0) {
+                    System.out.println(iter);
+                    printError(samples);
+                }
+                iter++;
             }
         }
 
@@ -62,6 +76,58 @@ public class NeuralNetwork {
 
 
     private void miniBathesLearning(List<Sample> samples) {
+        List<Sample> mini1 = new ArrayList<>();
+        List<Sample> mini2 = new ArrayList<>();
+        List<Sample> mini3 = new ArrayList<>();
+        List<Sample> mini4 = new ArrayList<>();
+        List<Sample> mini5 = new ArrayList<>();
+
+
+        int batchCounter = 0;
+        int samplesCounter = 0;
+        for (int i = 0; i < samples.size(); ++i) {
+            if (samplesCounter++ == 2) {
+                samplesCounter = 0;
+                batchCounter += 1;
+                batchCounter %= 5;
+            }
+
+            switch (batchCounter){
+                case(0):
+                    mini1.add(samples.get(i));
+                    break;
+                case(1):
+                    mini2.add(samples.get(i));
+                    break;
+                case(2):
+                    mini3.add(samples.get(i));
+                    break;
+                case(3):
+                    mini4.add(samples.get(i));
+                    break;
+                case(4):
+                    mini5.add(samples.get(i));
+                    break;
+            }
+
+        }
+
+
+
+        int iter = 0;
+        while(calculateError(samples) > 0.00000001 && iter < MAX_ITERS) {
+            learnOn(mini1);
+            learnOn(mini2);
+            learnOn(mini3);
+            learnOn(mini4);
+            learnOn(mini5);
+
+            if (iter % 10_00 == 0) {
+                System.out.println(iter);
+                printError(samples);
+            }
+            iter++;
+        }
 
     }
 
@@ -124,6 +190,11 @@ public class NeuralNetwork {
 
 
     private void printError(List<Sample> samples) {
+        System.out.println("Current error: " + calculateError(samples));
+
+    }
+
+    private double calculateError(List<Sample> samples) {
         double[] prediction;
         double error = 0;
 
@@ -137,7 +208,6 @@ public class NeuralNetwork {
             }
         }
 
-        System.out.println("Current error: " + error);
-
+        return error;
     }
 }
