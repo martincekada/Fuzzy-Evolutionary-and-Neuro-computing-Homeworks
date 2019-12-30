@@ -6,23 +6,23 @@ import static java.lang.Math.exp;
 import static java.lang.Math.pow;
 
 public class Rule {
-    private double a;
-    private double b;
-    private double c;
-    private double d;
+    public double a;
+    public double b;
+    public double c;
+    public double d;
 
     private double p;
     private double q;
     private double r;
 
-    private double updatedA = 0;
-    private double updatedB = 0;
-    private double updatedC = 0;
-    private double updatedD = 0;
+    private double updatedA;
+    private double updatedB;
+    private double updatedC;
+    private double updatedD;
 
-    private double updatedP = 0;
-    private double updatedQ = 0;
-    private double updatedR = 0;
+    private double updatedP;
+    private double updatedQ;
+    private double updatedR;
 
     public Rule(double a, double b, double c, double d, double p, double q, double r) {
         this.a = a;
@@ -32,6 +32,8 @@ public class Rule {
         this.p = p;
         this.q = q;
         this.r = r;
+
+
     }
 
     public static Rule generateRandomRule() {
@@ -47,6 +49,15 @@ public class Rule {
         double p = rand.nextDouble() * initRange - (initRange / 2.);
         double q = rand.nextDouble() * initRange - (initRange / 2.);
         double r = rand.nextDouble() * initRange - (initRange / 2.);
+
+        //        updatedA = 0;
+//        updatedB = 0;
+//        updatedC = 0;
+//        updatedD = 0;
+//
+//        updatedP = 0;
+//        updatedQ = 0;
+//        updatedR = 0;
 
         return new Rule(a, b, c, d, p, q, r);
 
@@ -74,14 +85,12 @@ public class Rule {
 
     public void accumulateRuleChange(double predictDiff, double weightedZSum, double piSum, Sample sample, double learningRate) {
 
-//        System.out.println("racunam nove");
-
-
         double alpha = getAlpha(sample.x);
         double beta = getBeta(sample.y);
         double z = getZ(sample.x, sample.y);
 
         double PIDerivation = (z * piSum - weightedZSum) / pow(piSum, 2);
+
         double mutalProduct = learningRate * predictDiff * PIDerivation * alpha * beta;
 
 
@@ -94,25 +103,22 @@ public class Rule {
 
         double pi = getPI(sample.x, sample.y);
 
-//        updatedP += learningRate * 10 * predictDiff * (pi / piSum) * sample.x;
-//        updatedQ += learningRate * 10 * predictDiff * (pi / piSum) * sample.y;
-//        updatedR += learningRate * 10 * predictDiff * (pi / piSum);
+        updatedP += learningRate * 10 * predictDiff * (pi / piSum) * sample.x;
+        updatedQ += learningRate * 10 * predictDiff * (pi / piSum) * sample.y;
+        updatedR += learningRate * 10 * predictDiff * (pi / piSum);
 
-        updatedP += learningRate * predictDiff * (pi / piSum) * sample.x;
-        updatedQ += learningRate * predictDiff * (pi / piSum) * sample.y;
-        updatedR += learningRate * predictDiff * (pi / piSum);
     }
 
     public void changeRuleParams() {
 //        System.out.println("mijenjam paramse");
-        this.a = updatedA;
-        this.b = updatedB;
-        this.c = updatedC;
-        this.d = updatedD;
+        this.a += updatedA;
+        this.b += updatedB;
+        this.c += updatedC;
+        this.d += updatedD;
 
-        this.p = updatedP;
-        this.q = updatedQ;
-        this.r = updatedR;
+        this.p += updatedP;
+        this.q += updatedQ;
+        this.r += updatedR;
 
         updatedA = 0;
         updatedB = 0;

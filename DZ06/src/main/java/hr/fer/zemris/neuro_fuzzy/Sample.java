@@ -31,8 +31,13 @@ public class Sample {
         return samples;
     }
 
+//    @Override
+//    public String toString() {
+//        return x + " " + y + " " + f;
+//    }
+
     @Override
     public String toString() {
-        return x + " " + y + " " + f;
+        return x + " " + y + " "; // + f;
     }
 }

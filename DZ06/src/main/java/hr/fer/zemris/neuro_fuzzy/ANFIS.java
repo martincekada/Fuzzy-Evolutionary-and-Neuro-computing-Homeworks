@@ -3,6 +3,7 @@ package hr.fer.zemris.neuro_fuzzy;
 import java.util.ArrayList;
 import java.util.List;
 
+import static java.lang.Math.abs;
 import static java.lang.Math.pow;
 
 public class ANFIS {
@@ -29,9 +30,9 @@ public class ANFIS {
         for (int i = 0; i < noOfEpochs; ++i) {
             runEpoche(stohastic);
 
-            if (i % 1 == 0) {
-                System.out.println(getSquareError());
-            }
+//            if (i % 100 == 0) {
+                System.out.println(i + " " + getAbsError());
+//            }
         }
     }
 
@@ -98,16 +99,27 @@ public class ANFIS {
         return nominatorSum / denominatorSum;
     }
 
-    public double getSquareError() {
+    public double getAbsError() {
         double error = 0;
 
         for (Sample s : samples) {
-            error += (0.5 * pow(predict(s) - s.f, 2));
+            error += abs(predict(s) - s.f);
         }
 
-        return error;
+        return error / samples.size();
     }
 
+    public List<Rule> getRules() {
+        return rules;
+    }
 
-
+    //    public double getSquareError() {
+//        double error = 0;
+//
+//        for (Sample s : samples) {
+//            error += (0.5 * pow(predict(s) - s.f, 2));
+//        }
+//
+//        return error;
+//    }
 }

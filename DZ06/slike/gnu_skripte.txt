@@ -1,0 +1,27 @@
+#Plotted using http://gnuplot.respawned.com/
+
+# third
+set xrange [-4:4]
+set yrange [-4:4]
+set pm3d
+splot ((x- 1)**2 + (y + 2)**2 - 5 * x * y + 3) * (cos(x / 5) ** 2) #exp(-x*x)*exp(-y*y)
+
+# forth
+set dgrid3d 8,8,1
+set hidden3d
+set pm3d
+
+splot  "data.txt" using 1:2:3 title 'Function' with lines
+
+
+# seventh
+plot  "data.txt" title 'Grupni' with lines
+
+# eight
+
+
+
+
+
+
+
